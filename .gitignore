@@ -1,0 +1,48 @@
+# Environment
+.env
+.venv/
+env/*
+
+# Build/test/coverage outputs
+build/
+dist/
+*.egg-info/
+.coverage
+htmlcov/
+.tox/
+
+# IDE and OS specific files
+Thumbs.db
+.DS_Store
+*.ipynb_checkpoints
+
+# Local documentation
+docs/_build/
+
+# Temporary virtualenv files
+*.pyc
+*.pyo
+
+# Cache
+__pycache__/
+
+# Optional
+manage.py
+
+# Ignore local configuration
+local_settings.py
+
+# Database files
+*.db
+*.sqlite3
+
+# Media files
+media/
+static/
+
+# Static files collected by django
+staticfiles/
+
+# JS/CSS Bundles
+*.bundle.js
+*.bundle.css

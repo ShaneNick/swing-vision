@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "swing-vision",
+  "private_key_id": "eaa15d2cc612f7432af95c985f4c47b6383c09a3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCqDd/4lGPPqquG\n/qvWyXLqJraESAe9UiMEXPQKIhJTGNiFTTuZlDdN6EOsbcesNn2d1rnvXynyAEg8\n9g+tnbI3QCChD226+YXpBtkPBSHJoRFiKK7hzE4dp0J4A6/wx9IbH2ZXJDjlK3h0\n3UMzgMjTWdU9VfD508BTLZiuKCuPkf1AZ5ebSWVtiMOgMItpALuHUIPZeZsgpn1/\n4mciAPcc8b/6O1mh2HrcWnaNbWpQwiqN+DhiV3+3/gObkfYc/IArmFUNN5tpj6xk\nISQq3Mpdynmx3tVKm16pZQ4FALvPDXnEVpnhbZ09qDBhatbEw0pW43hJUS4cvCK1\n2HduiSaBAgMBAAECggEAQBAEDRBR3ZzNC4kLUVoIqX82CPVdvQuhV3ZxFRQq1RUq\nFGW5Cy1T/EyAmgetTgolHn4TA8NU+O70R8rmsyASUFAfOq2mR+bSdKv4v3jOdrfv\n5Yuv/i5KS0+EcdPpxwpv83nLww5JRMQwl833EAL3JO/VrkqfAm6sKGmn+Av4BRh8\nCFlwQ8uje5ojTqNA7VlkDjtRDyPnSzK1fAKqeGwROvVWJFAgumq5BiMh5LRWsF3Z\nqFQwQmMwwMPEQBN17qjEmv7RMS4Nt2nll0taYC3XmVnTvUGnMKrGW9/tHt1PvQJ6\nzrxoffP/gC8Wbem8v7CNIxer/1+GWvo/wd2ZhuTMlQKBgQDXQJm2SSeRVEBJSFia\nr4YOqMRowKY/AzRULWqzNgDioOXXD+l5/fbgaBCJFUKiO2IKDgBa5zFiWFTkqh86\ndVvZ0OPx1eQHOzXFpLeCRizBceozQ2+IwBnO3lnzVAth2+wXklnbG4E6UlngHpZT\norWCW1we9ReVJ6/5etNzlKifswKBgQDKPupWL/JTRZ1Ou8Ym0tvz8+H/4k5M6bxa\n1kQp+M+RLohOOVbPDfOMKCh0yVKiyg9XhrhUCLuXt8VbAIHHQabRDme88GPBaobE\nlxvjnegaLwq+3ciE/zL25/BU4loPIlaRadUaKWNVsmJpokuyaUPTfu0xNf50oSKn\ndiEnBIAm+wKBgDHIQgSTlLAa0SdhsQRNde6r/4jOjWRjZFXXjybVZY0Ec0Oy7WeG\nYfNyfeiGXzvQChOTO2fKsnQxQ6kC42gMvmp40k8bDbrSadRFDR/3BODUbLrgbMou\ny4k5iYoqNNu0Fj05Xsi66r9HTnvz9wZuyhXU9VA/lO2tGRjU3FSN3BXbAoGBAMhp\npi+4HYrVLjgqLQal5t6M64R1DqB68nKVZ0CsVYwJr3rMqTBPI+vck5J/OcslLiTO\n1HQ5nyOOMRynmPMKJLN/cd8x27h7xoajMzjQboMb4KsY/a6FcUxotKh5EUN0BJLe\nbBUbtFrkhU8mS5rFYzf+zC760WdjkgKeNeYDOLbnAoGBAJyqYvxEiCf+UJ7vnTix\ncACMCqpwAwwkq/7blJMJJnfcjx9IyiH6Jjjyk+AAY7xuL504zk/4QFLm6fXRsUsw\nWpwfu6ygU4ACLREiFtV9j4j4YPrzDybOeooTk49kWlu2j76HFq0tqNZG6YoPQ1Mt\naiUtkkVsgHeTNdbqi4g9xZLW\n-----END PRIVATE KEY-----\n",
+  "client_email": "swing-vision-data@swing-vision.iam.gserviceaccount.com",
+  "client_id": "102441594594375199411",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/swing-vision-data%40swing-vision.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

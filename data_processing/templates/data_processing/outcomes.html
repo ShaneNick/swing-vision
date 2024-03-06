@@ -1,0 +1,17 @@
+<!-- data_processing/templates/outcomes.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Match Outcomes</title>
+</head>
+<body>
+    <h1>Match Outcomes</h1>
+    <ul>
+        {% for outcome in outcomes %}
+            <li>{{ outcome.Player }} - {{ outcome.Type }} (Shot {{ outcome.Shot_Number }}): {{ outcome.Outcome }} (Game {{ outcome.Game }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

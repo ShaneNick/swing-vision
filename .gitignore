@@ -46,3 +46,5 @@ staticfiles/
 # JS/CSS Bundles
 *.bundle.js
 *.bundle.css
+
+creds.json  

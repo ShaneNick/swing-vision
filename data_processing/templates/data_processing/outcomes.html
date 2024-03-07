@@ -1,10 +1,10 @@
-<!-- data_processing/templates/outcomes.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Match Outcomes</title>
+    <!-- Include Bokeh CSS for proper styling of the visualization -->
+    <link rel="stylesheet" href="https://cdn.bokeh.org/bokeh/release/bokeh-3.3.4.min.css" type="text/css" />
 </head>
 <body>
     <h1>Match Outcomes</h1>
@@ -13,5 +13,18 @@
             <li>{{ outcome.Player }} - {{ outcome.Type }} (Shot {{ outcome.Shot_Number }}): {{ outcome.Outcome }} (Game {{ outcome.Game }})</li>
         {% endfor %}
     </ul>
+    
+    <!-- Container for the interactive visualization -->
+    <div id="visualization">
+        <h2>Interactive Visualization</h2>
+        <!-- Embed Bokeh/Panel visualization here -->
+        {{ script|safe }}
+    </div>
+
+    <!-- Include Bokeh JS for interactivity -->
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.3.4.min.js"></script>
+    <!-- Additional scripts may be required for widgets or features you use -->
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.3.4.min.js"></script>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.3.4.min.js"></script>
 </body>
 </html>

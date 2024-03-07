@@ -1,6 +1,7 @@
+# data_processing/urls.py
 from django.urls import path
-from .views import outcomes_page  
+from .views import outcomes_page
 
 urlpatterns = [
-    path('outcomes/', outcomes_page, name='outcomes'),  
+    path('outcomes/', outcomes_page, name='outcomes'),
 ]

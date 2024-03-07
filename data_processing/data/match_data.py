@@ -14,12 +14,24 @@ scope = [
 # Set up the credentials and client
 current_dir = os.path.dirname(os.path.abspath(__file__))
 creds_path = os.path.join(current_dir, 'creds.json')
-creds = ServiceAccountCredentials.from_json_keyfile_name(creds_path, scope)
-client = gspread.authorize(creds)
+
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+creds_path = os.path.join(current_dir, 'creds.json')
+try:
+    creds = ServiceAccountCredentials.from_json_keyfile_name(creds_path, scope)
+    client = gspread.authorize(creds)
+except Exception as e:
+    print(f"Failed to set up Google Sheets client: {e}")
+    raise
 
 def sheet_to_df(worksheet):
-    records = worksheet.get_all_records()
-    return pd.DataFrame.from_records(records)
+    try:
+        records = worksheet.get_all_records()
+        return pd.DataFrame.from_records(records)
+    except Exception as e:
+        print(f"Error converting sheet to DataFrame: {e}")
+        raise
 
 def get_match_outcomes():
     shots_sheet = client.open_by_key('1RDJh21agwb5YtVjBU-6IbAhHwNhpbeI5ATA-wYR4BiU').worksheet('Shots')
@@ -60,9 +72,21 @@ def get_match_outcomes():
             'Outcome': outcome
         })
 
+        
+
     # Convert the corrected_outcomes list to a DataFrame
     corrected_outcomes_df = pd.DataFrame(corrected_outcomes)
+    corrected_outcomes_df['Shot_Number'] = corrected_outcomes_df['Shot_Number'].astype('Int64')
+    corrected_outcomes_df['Game'] = corrected_outcomes_df['Game'].astype('Int64')
 
+    # Convert 'Player', 'Type', and 'Outcome' columns to categorical data types
+    corrected_outcomes_df['Player'] = corrected_outcomes_df['Player'].astype('category')
+    corrected_outcomes_df['Type'] = corrected_outcomes_df['Type'].astype('category')
+    corrected_outcomes_df['Outcome'] = corrected_outcomes_df['Outcome'].astype('category')
+
+    print(corrected_outcomes_df.dtypes)
+    print(corrected_outcomes_df.isnull().sum())
+    print(corrected_outcomes_df[['Shot_Number', 'Game']].head(10))
     return corrected_outcomes_df
 
 # Example usage:

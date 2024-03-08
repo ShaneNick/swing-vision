@@ -9,10 +9,11 @@
 <body>
     <h1>Match Outcomes</h1>
     <ul>
-        {% for outcome in outcomes %}
-            <li>{{ outcome.Player }} - {{ outcome.Type }} (Shot {{ outcome.Shot_Number }}): {{ outcome.Outcome }} (Game {{ outcome.Game }})</li>
-        {% endfor %}
-    </ul>
+    {% for outcome in outcomes %}
+        <li>{{ outcome.Number }}. {{ outcome.Player }} - {{ outcome.Type }} (Shot {{ outcome.Shot_Number }}): {{ outcome.Outcome }} (Game {{ outcome.Game }}) - {{ outcome.Win }}</li>
+    {% endfor %}
+</ul>
+
     
     <!-- Container for the interactive visualization -->
     <div id="visualization">

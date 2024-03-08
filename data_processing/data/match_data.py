@@ -3,7 +3,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import os
 
-# Define your Google Sheets API scope
+# Google Sheets API scope
 scope = [
     'https://spreadsheets.google.com/feeds',
     'https://www.googleapis.com/auth/spreadsheets',
@@ -34,14 +34,15 @@ def sheet_to_df(worksheet):
         raise
 
 def get_match_outcomes():
-    shots_sheet = client.open_by_key('1RDJh21agwb5YtVjBU-6IbAhHwNhpbeI5ATA-wYR4BiU').worksheet('Shots')
-    points_sheet = client.open_by_key('1RDJh21agwb5YtVjBU-6IbAhHwNhpbeI5ATA-wYR4BiU').worksheet('Points')
+    workbook_key = '1RDJh21agwb5YtVjBU-6IbAhHwNhpbeI5ATA-wYR4BiU'
+    shots_sheet = client.open_by_key(workbook_key).worksheet('Shots')
+    points_sheet = client.open_by_key(workbook_key).worksheet('Points')
     
     # Convert sheets to DataFrame
     shots_df = sheet_to_df(shots_sheet)
     points_df = sheet_to_df(points_sheet)
 
-    filtered_shots_df = shots_df[(shots_df['Player'] == 'Player') & (shots_df['Shot'].isin([1, 3, 5]))]
+    filtered_shots_df = shots_df[(shots_df['Player'] == 'Player') & shots_df['Shot'].isin([1, 3, 5])]
 
     # Initialize an empty list to hold the corrected outcomes
     corrected_outcomes = []
@@ -68,6 +69,8 @@ def get_match_outcomes():
             'Player': 'Player',
             'Shot_Number': shot_number,
             'Type': shot_type,
+
+            
             'Game': game_number,
             'Outcome': outcome
         })
@@ -92,3 +95,5 @@ def get_match_outcomes():
 # Example usage:
 # outcomes_df = get_match_outcomes()
 # print(outcomes_df.head())
+
+

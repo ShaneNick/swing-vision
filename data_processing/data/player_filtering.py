@@ -2,32 +2,8 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import os
-
-# Google Sheets API scope
-scope = [
-    'https://spreadsheets.google.com/feeds',
-    'https://www.googleapis.com/auth/spreadsheets',
-    'https://www.googleapis.com/auth/drive.file',
-    'https://www.googleapis.com/auth/drive',
-]
-
-# Set up the credentials and client
-current_dir = os.path.dirname(os.path.abspath(__file__))
-creds_path = os.path.join(current_dir, 'creds.json')
-try:
-    creds = ServiceAccountCredentials.from_json_keyfile_name(creds_path, scope)
-    client = gspread.authorize(creds)
-except Exception as e:
-    print(f"Failed to set up Google Sheets client: {e}")
-    raise
-
-def sheet_to_df(worksheet):
-    try:
-        records = worksheet.get_all_records()
-        return pd.DataFrame.from_records(records)
-    except Exception as e:
-        print(f"Error converting sheet to DataFrame: {e}")
-        raise
+from ..data_access.utils import setup_client, sheet_to_df
+client = setup_client()
 
 def get_match_outcomes():
     workbook_key = '1RDJh21agwb5YtVjBU-6IbAhHwNhpbeI5ATA-wYR4BiU'

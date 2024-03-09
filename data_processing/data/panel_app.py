@@ -2,9 +2,16 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import panel as pn
 import hvplot.pandas
-import io 
+import io
+import numpy as np
 
-from player_filtering import get_match_outcomes
+# Corrected import paths based on the provided folder structure
+from ..data_access.data_access import get_shots_df, get_points_df, setup_client
+
+# Assuming that player_filtering.py and sequence_analysis.py are in the data/ directory
+from .player_filtering import get_match_outcomes
+from .sequence_analysis import enrich_shots_with_point_outcomes
+
 
 # Load the match outcomes data
 df = get_match_outcomes()
@@ -115,4 +122,46 @@ layout = pn.Column(
 )
 
 # Serve the layout as a Panel app
+layout.servable()
+
+
+# Function to analyze and visualize serve outcome distribution
+def serve_outcome_distribution():
+    shots_df = get_shots_df()
+    points_df = get_points_df()
+    
+    # Filter serves from the DataFrame
+    serve_df = df[df['Shot'] == 1]
+
+    # Categorize serve outcomes into 'Ace', 'Double Fault', 'Service Winner', and 'Other'
+    conditions = [
+        serve_df['Shot Description'].str.contains('Ace', case=False),
+        serve_df['Shot Description'].str.contains('Double Fault', case=False),
+        serve_df['Shot Description'].str.contains('Service Winner', case=False)
+    ]
+    choices = ['Ace', 'Double Fault', 'Service Winner']
+    serve_df['Serve Outcome'] = np.select(conditions, choices, default='Other')
+
+    # Count occurrences of each serve outcome
+    outcome_counts = serve_df['Serve Outcome'].value_counts().reset_index()
+    outcome_counts.columns = ['Serve Outcome', 'Count']
+
+    # Create a bar plot for serve outcome distribution using Matplotlib
+    plt.figure(figsize=(10, 6))
+    plt.bar(outcome_counts['Serve Outcome'], outcome_counts['Count'], color='skyblue')
+    plt.xlabel('Serve Outcome')
+    plt.ylabel('Count')
+    plt.title('Distribution of Serve Outcomes')
+    plt.tight_layout()
+
+    # Convert the Matplotlib plot to a Panel object for embedding in the Panel app
+    serve_outcome_plot = pn.pane.Matplotlib(plt.gcf(), tight=True)
+    plt.close()  # Close the plot to free memory
+    return serve_outcome_plot
+
+# Define Panel layout including the serve outcome distribution plot
+serve_outcome_plot = serve_outcome_distribution()
+layout = pn.Column(pn.pane.Markdown("# Serve Outcome Distribution Analysis"), serve_outcome_plot)
+
+# Make the layout servable as a Panel app
 layout.servable()
